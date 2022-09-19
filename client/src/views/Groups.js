@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams,} from "react-router-dom";
 
-import { getAllGroups } from "../services/internalApiService";
+import { getAllGroups, deleteGroupById } from "../services/internalApiService";
 
 export const AllGroups = (props) => {
   const [groups, setGroups] = useState([]);
+  // const [group, setGroup] = useState(null);
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
     getAllGroups()
@@ -17,76 +20,71 @@ export const AllGroups = (props) => {
       });
   }, []);
 
+  const handleDeleteClick = () => {
+    deleteGroupById(id)
+      .then((deletedGroup) => {
+        navigate("/groups");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="mx-auto">
       <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-center mb-4">
-        <h1 className="navbar-brand mb-0"><h1>GroupUp⬆️</h1></h1>
+        <h1 className="navbar-brand mb-0">
+          <h1>GroupUp⬆️</h1>
+        </h1>
         <div className="navbar-nav justify-content-between">
-        <Link to="/groups/login" className="btn btn-sm btn-outline-primary mx-1">
+          <Link
+            to="/groups/login"
+            className="btn btn-sm btn-outline-primary mx-1"
+          >
             Login/Register
           </Link>
-          <Link to="/groups/new" className="btn btn-sm btn-outline-success mx-1">
+          <Link
+            to="/groups/new"
+            className="btn btn-sm btn-outline-success mx-1"
+          >
             Create a group
           </Link>
         </div>
       </nav>
       <h2>Active Groups:</h2>
 
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>
-              <h3>Name</h3>
-            </th>
-            <th>
-              <h3>Date</h3>
-            </th>
-            <th>
-              <h3>Location</h3>
-            </th>
-            <th>
-              <h3>Posted By</h3>
-            </th>
-            <th>
-              <h3>Actions</h3>
-            </th>
-          </tr>
-        </thead>
-        {groups.map((group) => {
-          const { _id, groupName, groupDate, location, creator } = group;
-          return (
-            <tbody>
-              <tr>
-                <td>
-                  <Link to={`/groups/${_id}`}>
-                    <h4>{groupName}</h4>
-                  </Link>
-                </td>
-                <td>
-                  <h4>{groupDate}</h4>
-                </td>
-                <td>
-                  <h4>{location}</h4>
-                </td>
-                <td>
-                  <h4>{creator}</h4>
-                </td>
-                <td>
-                  <Link to={`/groups/${_id}`} className="btn btn-outline-primary mx-1">
-                    Details
-                  </Link>
-                  <Link
-                    to={`/groups/${_id}/edit`}
-                    className="btn btn-outline-warning mx-1"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-            </tbody>
-          );
-        })}
-      </table>
+      {groups.map((group) => {
+        const { _id, groupName, groupDate, desc, location, creator } = group;
+
+        return (
+          <div key={_id} className="shadow mb-4 rounded border p-4">
+            <Link to={`/groups/${_id}`}>
+              <h4>{groupName}</h4>
+            </Link>
+            <p>Date: {groupDate}</p>
+            <p>Description: {desc}</p>
+            <p>Location: {location}</p>
+            <p>Posted by: {creator}</p>
+
+            <div className="mt-2">
+              <Link
+                to={`/groups/${_id}/edit`}
+                className="btn btn-sm btn-outline-warning mx-1"
+              >
+                Edit
+              </Link>
+              <button
+                onClick={(e) => {
+                  handleDeleteClick();
+                }}
+                className="btn btn-sm btn-outline-danger mx-1"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
