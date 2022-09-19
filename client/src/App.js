@@ -6,6 +6,7 @@ import { AllGroups } from "./views/Groups";
 import { ViewGroup } from "./views/ViewGroup";
 import { EditGroup } from "./views/EditGroup";
 import { NewGroup } from "./views/NewGroup";
+import { LoginReg } from "./views/LoginReg";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/groups/:id/edit" element={<EditGroup />} />
         <Route path="/groups/:id" element={<ViewGroup />} />
         <Route path="/groups/new" element={<NewGroup />} />
+        <Route path="/groups/login" element={<LoginReg />} />
       </Routes>
     </div>
   );

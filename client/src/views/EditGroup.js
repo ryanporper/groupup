@@ -7,6 +7,7 @@ export const EditGroup = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [groupName, setGroupName] = useState("");
+  const [groupDate, setGroupDate] = useState("");
   const [groupType, setGroupType] = useState("");
   const [location, setLocation] = useState("");
   const [desc, setDesc] = useState("");
@@ -18,6 +19,7 @@ export const EditGroup = (props) => {
     getGroupById(id)
       .then((data) => {
         setGroupName(data.groupName);
+        setGroupDate(data.groupDate);
         setGroupType(data.groupType);
         setLocation(data.location);
         setDesc(data.desc);
@@ -34,6 +36,7 @@ export const EditGroup = (props) => {
 
     const editedGroup = {
       groupName,
+      groupDate,
       groupType,
       location,
       desc,
@@ -55,7 +58,7 @@ export const EditGroup = (props) => {
   return (
     <div className="mx-auto">
       <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-center mb-4">
-        <h1 className="navbar-brand mb-0">GroupUp</h1>
+        <h1 className="navbar-brand mb-0"><h1>GroupUp⬆️</h1></h1>
         <div className="navbar-nav justify-content-between">
           <Link to="/groups" className="btn btn-sm btn-outline-primary mx-1">
             Home
@@ -76,6 +79,20 @@ export const EditGroup = (props) => {
               type="text"
               className="form-control"
               value={groupName}
+            />
+          </div>
+          <div className="form-group">
+            <label className="h6">Date:</label>
+            {errors?.groupDate && (
+              <span style={{ color: "red" }}> {errors?.groupDate?.message}</span>
+            )}
+            <input
+              onChange={(event) => {
+                setGroupDate(event.target.value);
+              }}
+              type="date"
+              className="form-control"
+              value={groupDate}
             />
           </div>
           <div className="form-group">

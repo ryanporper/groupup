@@ -20,8 +20,11 @@ export const AllGroups = (props) => {
   return (
     <div className="mx-auto">
       <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-center mb-4">
-        <h1 className="navbar-brand mb-0">GroupUp</h1>
+        <h1 className="navbar-brand mb-0"><h1>GroupUp⬆️</h1></h1>
         <div className="navbar-nav justify-content-between">
+        <Link to="/groups/login" className="btn btn-sm btn-outline-primary mx-1">
+            Login/Register
+          </Link>
           <Link to="/groups/new" className="btn btn-sm btn-outline-success mx-1">
             Create a group
           </Link>
@@ -36,7 +39,7 @@ export const AllGroups = (props) => {
               <h3>Name</h3>
             </th>
             <th>
-              <h3>Type</h3>
+              <h3>Date</h3>
             </th>
             <th>
               <h3>Location</h3>
@@ -50,7 +53,7 @@ export const AllGroups = (props) => {
           </tr>
         </thead>
         {groups.map((group) => {
-          const { _id, groupName, groupType, location, creator } = group;
+          const { _id, groupName, groupDate, location, creator } = group;
           return (
             <tbody>
               <tr>
@@ -60,7 +63,7 @@ export const AllGroups = (props) => {
                   </Link>
                 </td>
                 <td>
-                  <h4>{groupType}</h4>
+                  <h4>{groupDate}</h4>
                 </td>
                 <td>
                   <h4>{location}</h4>

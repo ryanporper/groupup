@@ -7,6 +7,7 @@ export const NewGroup = (props) => {
   const navigate = useNavigate();
 
   const [groupName, setGroupName] = useState("");
+  const [groupDate, setGroupDate] = useState("");
   const [groupType, setGroupType] = useState("");
   const [location, setLocation] = useState("");
   const [desc, setDesc] = useState("");
@@ -19,6 +20,7 @@ export const NewGroup = (props) => {
 
     const newGroup = {
       groupName,
+      groupDate,
       groupType,
       location,
       desc,
@@ -40,7 +42,7 @@ export const NewGroup = (props) => {
   return (
     <div className="mx-auto">
       <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-center mb-4">
-        <h1 className="navbar-brand mb-0">GroupUp</h1>
+        <h1 className="navbar-brand mb-0"><h1>GroupUp⬆️</h1></h1>
         <div className="navbar-nav justify-content-between">
           <Link to="/groups" className="btn btn-sm btn-outline-primary mx-1">
             Home
@@ -59,6 +61,19 @@ export const NewGroup = (props) => {
                 setGroupName(event.target.value);
               }}
               type="text"
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label className="h6">Date: </label>
+            {errors?.groupDate && (
+              <span style={{ color: "red" }}> {errors?.groupDate?.message}</span>
+            )}
+            <input
+              onChange={(event) => {
+                setGroupDate(event.target.value);
+              }}
+              type="date"
               className="form-control"
             />
           </div>
