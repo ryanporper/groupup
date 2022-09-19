@@ -102,6 +102,19 @@ export const NewGroup = (props) => {
             />
           </div>
           <div className="form-group">
+            <label className="h6">Creator: </label>
+            {errors?.creator && (
+              <span style={{ color: "red" }}> {errors?.creator?.message}</span>
+            )}
+            <input
+              onChange={(event) => {
+                setCreator(event.target.value);
+              }}
+              type="text"
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
             <label className="h6">Price (if applicable): </label>
             <input
               onChange={(event) => {

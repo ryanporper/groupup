@@ -50,7 +50,7 @@ export const AllGroups = (props) => {
           </tr>
         </thead>
         {groups.map((group) => {
-          const { _id, groupName, groupType, location, desc, creator, price } = group;
+          const { _id, groupName, groupType, location, creator } = group;
           return (
             <tbody>
               <tr>
