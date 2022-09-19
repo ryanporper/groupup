@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const port = 8000;
 
-const { petRouter } = require('./routes/pet.routes');
+const { groupRouter } = require('./routes/group.routes');
 
 require('./config/mongoose.config');
 
@@ -12,7 +12,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('/api/pets', petRouter);
+app.use('/api/groups', groupRouter);
 
 app.listen(port, () =>
   console.log(`Listening on port ${port} for REQuests to RESpond to.`)
