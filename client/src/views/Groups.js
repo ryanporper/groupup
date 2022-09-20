@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { getAllGroups } from "../services/internalApiService";
 
@@ -40,9 +40,8 @@ export const AllGroups = (props) => {
       </nav>
       <h2 className="text-center">Active Groups:</h2>
       <div className="">
-
         {groups.map((group) => {
-          const { _id, groupName, groupDate, desc, location, creator } = group;
+          const { _id, groupName, groupDate, desc, location, creator, price } = group;
 
           return (
             <div key={_id} className="shadow mb-4 rounded border p-4">
@@ -52,6 +51,7 @@ export const AllGroups = (props) => {
               <p>Date: {groupDate}</p>
               <p>Description: {desc}</p>
               <p>Location: {location}</p>
+              {price && <p>Price: ${price}</p>}
               <p>Posted by: {creator}</p>
 
               <div className="mt-2">

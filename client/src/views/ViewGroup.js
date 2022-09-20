@@ -66,8 +66,8 @@ export const ViewGroup = (props) => {
         <h4 className="mb-3">Date: {groupDate}</h4>
         <h4 className="mb-3">Group Type: {groupType}</h4>
         <h4 className="mb-3">Description: {desc}</h4>
+        {price && <h4 className="mb-3">Price: ${price}</h4>}
         <h4 className="mb-3">Posted By: {creator}</h4>
-        <h4 className="mb-3">{price && <h4>Price: ${price}</h4>}</h4>
       </div>
       <button onClick={(e) => {
           handleDeleteClick();
