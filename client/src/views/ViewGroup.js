@@ -33,7 +33,7 @@ export const ViewGroup = (props) => {
       });
   };
 
-  const { groupName, groupDate, groupType, location, desc, creator, price } = group;
+  const { groupName, groupDate, groupType, location, locLink, src, desc, creator, price } = group;
 
   return (
     <div className="mx-auto">
@@ -47,9 +47,24 @@ export const ViewGroup = (props) => {
       </nav>
       <h1>{groupName}</h1>
       <div className="w-100 mx-auto shadow mb-4 rounded border p-4">
-        <h4 className="mb-3">Group Type: {groupType}</h4>
-        <h4 className="mb-3">Date: {groupDate}</h4>
+      {src && (
+        <img src={src} alt={groupName} className="shadow rounded mb-4" width="100%" height="600" />
+      )}
+
+      { locLink && (
+        <iframe
+          title={location}
+          src={locLink}
+          width="100%"
+          height="600"
+          allowFullScreen=""
+          loading="lazy"
+          className="shadow rounded"
+        ></iframe>
+      )}
         <h4 className="mb-3">Location: {location}</h4>
+        <h4 className="mb-3">Date: {groupDate}</h4>
+        <h4 className="mb-3">Group Type: {groupType}</h4>
         <h4 className="mb-3">Description: {desc}</h4>
         <h4 className="mb-3">Posted By: {creator}</h4>
         <h4 className="mb-3">{price && <h4>Price: ${price}</h4>}</h4>

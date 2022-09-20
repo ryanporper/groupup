@@ -10,6 +10,9 @@ export const EditGroup = (props) => {
   const [groupDate, setGroupDate] = useState("");
   const [groupType, setGroupType] = useState("");
   const [location, setLocation] = useState("");
+  const[locLink, setLocLink] = useState("");
+  const [src, setSrc] = useState('');
+  const [srcType, setSrcType] = useState('')
   const [desc, setDesc] = useState("");
   const [creator, setCreator] = useState("");
   const [price, setPrice] = useState("");
@@ -22,6 +25,9 @@ export const EditGroup = (props) => {
         setGroupDate(data.groupDate);
         setGroupType(data.groupType);
         setLocation(data.location);
+        setLocLink(data.locLink);
+        setSrc(data.src);
+        setSrcType(data.srcType);
         setDesc(data.desc);
         setCreator(data.creator);
         setPrice(data.price);
@@ -39,6 +45,9 @@ export const EditGroup = (props) => {
       groupDate,
       groupType,
       location,
+      locLink,
+      src, 
+      srcType,
       desc,
       creator,
       price
@@ -122,6 +131,28 @@ export const EditGroup = (props) => {
               className="form-control"
               value={location}
             />
+          </div>
+          <div className="form-group">
+          <label className="h6">Google Mpas Embed</label>
+          <input
+            onChange={(event) => {
+              setLocLink(event.target.value);
+            }}
+            type="text"
+            className="form-control"
+            value={locLink}
+          />
+          </div>
+          <div className="form-group">
+          <label className="h6">Media URL</label>
+          <input
+            onChange={(event) => {
+              setSrc(event.target.value);
+            }}
+            type="text"
+            className="form-control"
+            value={src}
+          />
           </div>
           <div className="form-group">
             <label className="h6">Description:</label>
