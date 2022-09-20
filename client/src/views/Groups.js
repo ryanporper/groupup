@@ -49,7 +49,7 @@ export const AllGroups = (props) => {
             group;
 
           return (
-            <div key={_id} className="shadow mb-4 rounded border p-4 d-flex">
+            <div key={_id} className="shadow mb-4 rounded border p-4 d-flex w-50">
               <div>
                 <Link to={`/groups/${_id}`}>
                   <h4>{groupName}</h4>
