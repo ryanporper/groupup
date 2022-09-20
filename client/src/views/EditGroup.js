@@ -66,7 +66,7 @@ export const EditGroup = (props) => {
 
   return (
     <div className="mx-auto">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-center mb-4">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center mb-4">
         <h1 className="navbar-brand mb-0"><h1>GroupUp⬆️</h1></h1>
         <div className="navbar-nav justify-content-between">
           <Link to="/groups" className="btn btn-sm btn-outline-primary mx-1">

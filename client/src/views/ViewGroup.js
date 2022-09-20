@@ -37,7 +37,8 @@ export const ViewGroup = (props) => {
 
   return (
     <div className="mx-auto">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-center mb-4">
+      {/* nav bar */}
+      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center mb-4">
         <h1 className="navbar-brand mb-0"><h1>GroupUp⬆️</h1></h1>
         <div className="navbar-nav justify-content-between">
           <Link to="/groups" className="btn btn-sm btn-outline-primary mx-1">
@@ -46,11 +47,13 @@ export const ViewGroup = (props) => {
         </div>
       </nav>
       <h1>{groupName}</h1>
-      <div className="w-100 mx-auto shadow mb-4 rounded border p-4">
+      <div className="mx-auto shadow mb-4 rounded border p-2">  
+      {/* img */}
       {src && (
         <img src={src} alt={groupName} className="shadow rounded mb-4" width="100%" height="600" />
       )}
 
+      {/* google maps embed */}
       { locLink && (
         <iframe
           title={location}

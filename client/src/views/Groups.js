@@ -16,10 +16,14 @@ export const AllGroups = (props) => {
         console.log(error);
       });
   }, []);
+  
+  // edit img to either go into center of card
+  // or
+  // center the entire card and make width 50
 
   return (
     <div className="mx-auto">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-center mb-4">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center mb-4">
         <h1 className="navbar-brand mb-0">
           <h1>GroupUp⬆️</h1>
         </h1>
@@ -38,29 +42,43 @@ export const AllGroups = (props) => {
           </Link>
         </div>
       </nav>
-      <h2 className="text-center">Active Groups:</h2>
+      <h2 className="text-center mb-4">Active Groups:</h2>
       <div className="">
         {groups.map((group) => {
-          const { _id, groupName, groupDate, desc, location, creator, price } = group;
+          const { _id, groupName, groupDate, desc, src, location, creator, price } =
+            group;
 
           return (
-            <div key={_id} className="shadow mb-4 rounded border p-4">
-              <Link to={`/groups/${_id}`}>
-                <h4>{groupName}</h4>
-              </Link>
-              <p>Date: {groupDate}</p>
-              <p>Description: {desc}</p>
-              <p>Location: {location}</p>
-              {price && <p>Price: ${price}</p>}
-              <p>Posted by: {creator}</p>
-
-              <div className="mt-2">
-                <Link
-                  to={`/groups/${_id}/edit`}
-                  className="btn btn-sm btn-outline-warning mx-1"
-                >
-                  Edit
+            <div key={_id} className="shadow mb-4 rounded border p-4 d-flex">
+              <div>
+                <Link to={`/groups/${_id}`}>
+                  <h4>{groupName}</h4>
                 </Link>
+                <p>Date: {groupDate}</p>
+                <p>Description: {desc}</p>
+                <p>Location: {location}</p>
+                {price && <p>Price: ${price}</p>}
+                <p>Posted by: {creator}</p>
+
+                <div className="mt-2 d-flex">
+                  <Link
+                    to={`/groups/${_id}/edit`}
+                    className="btn btn-sm btn-outline-warning mx-1"
+                  >
+                    Edit
+                  </Link>
+                </div>
+              </div>
+              <div className="mx-2">
+                {src && (
+                  <img
+                    src={src}
+                    alt={groupName}
+                    className="shadow rounded mb-4"
+                    width="100%"
+                    height="250"
+                  />
+                )}
               </div>
             </div>
           );
