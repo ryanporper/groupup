@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { getAllGroups } from "../services/internalApiService";
+// used to format date 
+const moment = require("moment");
 
 export const AllGroups = (props) => {
   const [groups, setGroups] = useState([]);
@@ -16,10 +18,6 @@ export const AllGroups = (props) => {
         console.log(error);
       });
   }, []);
-  
-  // edit img to either go into center of card
-  // or
-  // center the entire card and make width 50
 
   return (
     <div className="mx-auto">
@@ -45,30 +43,19 @@ export const AllGroups = (props) => {
       <h2 className="text-center mb-4">Active Groups:</h2>
       <div className="">
         {groups.map((group) => {
-          const { _id, groupName, groupDate, desc, src, location, creator, price } =
-            group;
+          const {
+            _id,
+            groupName,
+            groupDate,
+            desc,
+            src,
+            location,
+            creator,
+            price,
+          } = group;
 
           return (
-            <div key={_id} className="shadow mb-4 rounded border p-4 d-flex w-50">
-              <div>
-                <Link to={`/groups/${_id}`}>
-                  <h4>{groupName}</h4>
-                </Link>
-                <p>Date: {groupDate}</p>
-                <p>Description: {desc}</p>
-                <p>Location: {location}</p>
-                {price && <p>Price: ${price}</p>}
-                <p>Posted by: {creator}</p>
-
-                <div className="mt-2 d-flex">
-                  <Link
-                    to={`/groups/${_id}/edit`}
-                    className="btn btn-sm btn-outline-warning mx-1"
-                  >
-                    Edit
-                  </Link>
-                </div>
-              </div>
+            <div key={_id} className="shadow mb-4 rounded border">
               <div className="mx-2">
                 {src && (
                   <img
@@ -79,6 +66,33 @@ export const AllGroups = (props) => {
                     height="250"
                   />
                 )}
+              </div>
+              <div className="p-4 text-center">
+                <Link to={`/groups/${_id}`}>
+                  <h2>{groupName}</h2>
+                </Link>
+                <h3>Date: {moment(groupDate).format("MMMM Do, YYYY")}</h3>
+                <h3>Description: {desc}</h3>
+                <h3>Location: {location}</h3>
+                {price && <h3>Price: ${price}</h3>}
+                <h3>Posted by: {creator}</h3>
+
+                <div className="">
+                  <Link
+                    to={`/groups/${_id}`}
+                    className="btn btn-outline-primary mx-1"
+                  >
+                    View
+                  </Link>
+                  <div className="mt-2">
+                    <Link
+                      to={`/groups/${_id}/edit`}
+                      className="btn btn-outline-warning mx-1"
+                    >
+                      Edit
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           );
