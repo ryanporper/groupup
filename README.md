@@ -3,7 +3,7 @@ A website designed for the user to be able to find or create a group to engage i
 
 Full CRUD functionality. Users can create, edit, view and delete groups.
 
-Developed using React.js, Node.js, Mongoose, MongoDB, Bootstrap, GoogleMaps
+Developed using React.js, Node.js, Mongoose, MongoDB, Bootstrap, GoogleMaps Embded API
 
 # Home Page
 
