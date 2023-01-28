@@ -1,9 +1,17 @@
 # Full-Stack React MERN App - GroupUp
-A website designed for the user to be able to find or create a group to engage in various activities.
+## A website designed for the user to be able to find or create a group to engage in various activities.
+## Full CRUD functionality. Users can create, edit, view and delete groups.
 
-Full CRUD functionality. Users can create, edit, view and delete groups.
-
-Developed using React.js, Node.js, Mongoose, MongoDB, Bootstrap, GoogleMaps Embded API
+## Developed using:
+**Frontend**
+- React.js
+- Bootstrap
+- moment.js
+- GoogleMaps Embded API
+**Backend**
+- Mongoose
+- Express.js
+- Node.js
 
 # Home Page
 
